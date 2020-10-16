@@ -76,21 +76,27 @@ function setup() {
 			event.preventDefault();
 		}
 
+		menuBar(timelineLoaded) {
+			return (
+				<div className="menu_bar flex">
+					<p className="menu_button" onClick={this.newTimeline}>New Timeline</p>
+					<p className="menu_button">Open Existing Timeline</p>
+					<p className={`menu_button ${timelineLoaded ? "" : "disabled"}`}>Save Timeline</p>
+				</div>
+			);
+		}
+
 		render() {
 			const timelineLoaded = Object.keys(this.state.timeline).length > 0;
 			const events = this.state.timeline["events"];
 			const editingIndex = this.state.editing_index;
-			return (
-				<div className="row full_height">
-					<div className="menu">
-						<div className="row">
-							<p className="menu_button" onClick={this.newTimeline}>New Timeline</p>
-							<p className="menu_button">Open Existing Timeline</p>
-							<p className={`menu_button ${timelineLoaded ? "" : "disabled"}`}>Save Timeline</p>
-						</div>
-						<div className="separator"/>
-						{timelineLoaded ? <div className="editor" hidden={!timelineLoaded}>
-							<h1>Events</h1>
+			if (timelineLoaded) {
+				return (
+					<div className="flex full_height">
+						<div className="flex full_height left_bar">
+							{this.menuBar(true)}
+							<div className="separator"/>
+							<h2>Events</h2>
 							<div className="scroll_box">
 								<table>
 									<tbody>
@@ -105,7 +111,6 @@ function setup() {
 									</tbody>
 								</table>
 							</div>
-							<br/>
 							<h2>{editingIndex >= 0 ? "Edit Event" : "Add Event"}</h2>
 							<form onSubmit={this.addEvent}>
 								<input
@@ -142,11 +147,20 @@ function setup() {
 								<input className="input_button half_width" type="submit" value="Submit"/>
 								<input className="input_button half_width" type="button" onClick={this.cancelEditEvent} value="Cancel"/>
 							</form>
-						</div> : null}
+						</div>
+						<canvas/>
 					</div>
-					<canvas/>
-				</div>
-			);
+				);
+			} else {
+				return (
+					<div className="flex full_height">
+						<div className="flex full_height left_bar">
+							{this.menuBar(false)}
+							<div className="separator"/>
+						</div>
+					</div>
+				);
+			}
 		}
 	}
 

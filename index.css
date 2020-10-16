@@ -132,7 +132,7 @@ textarea.input_text {
 	width: 50%;
 }
 
-.row {
+.flex {
 	display: flex;
 }
 
@@ -140,12 +140,19 @@ textarea.input_text {
 	height: 100%;
 }
 
-.menu {
+.left_bar {
 	border-right: 1px solid var(--accentColorDisabled);
+	flex-direction: column;
+	padding: 0 2em;
+}
+
+.menu_bar {
+	margin: 0 -2em;
 }
 
 .separator {
 	border-top: 1px solid var(--accentColorDisabled);
+	margin: 0 -2em;
 }
 
 .menu_button {
@@ -168,10 +175,6 @@ textarea.input_text {
 }
 
 .scroll_box {
-	height: 45%;
+	flex: 1;
 	overflow-y: auto;
-}
-
-.editor {
-	padding: 0 2em;
 }
