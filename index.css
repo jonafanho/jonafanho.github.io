@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+
+:root {
+	--backgroundColor: #FFFFFF;
+	--accentColorDisabled: #DDDDDD;
+	--textColorDisabled: #BBBBBB;
+	--accentColor: #999999;
+	--accentColorButtonHover: #777777;
+	--accentColorLinkHover: #777777;
+	--textColorLink: #222222;
+	--textColor: #000000;
+	/*Hover: 60% opacity on white*/
+	/*Disabled: 20% opacity on white*/
+	--blue: #4169E1;
+	--blueHover: #8DA5ED;
+	--blueDisabled: #D9E1F9;
+	--red: #CC0000;
+	--redHover: #E06666;
+	--redDisabled: #F5CCCC;
+	--green: #008000;
+	--greenHover: #66B366;
+	--greenDisabled: #CCE6CC;
+	--yellow: #FFFF00;
+	--yellowHover: #FFFF66;
+	--yellowDisabled: #FFFFCC;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--backgroundColor: #000000;
+		--accentColorDisabled: #222222;
+		--textColorDisabled: #666666;
+		--accentColor: #666666;
+		--accentColorButtonHover: #888888;
+		--accentColorLinkHover: #AAAAAA;
+		--textColorLink: #DDDDDD;
+		--textColor: #FFFFFF;
+		/*Hover: 80% opacity on black*/
+		/*Disabled: 40% opacity on black*/
+		--blue: #6090FF;
+		--blueHover: #4D73CC;
+		--blueDisabled: #263A66;
+		--red: #CC0000;
+		--redHover: #A30000;
+		--redDisabled: #520000;
+		--green: #00CC00;
+		--greenHover: #00A300;
+		--greenDisabled: #005200;
+		--yellow: #CCCC00;
+		--yellowHover: #A3A300;
+		--yellowDisabled: #525200;
+	}
+}
+
+* {
+	font-family: "Noto Sans", sans-serif;
+}
+
+body {
+	background-color: var(--backgroundColor);
+	color: var(--textColor);
+	margin: 0;
+}
+
+a {
+	cursor: pointer;
+	color: var(--textColorLink);
+	text-decoration: underline;
+}
+
+a:hover {
+	color: var(--accentColorLinkHover);
+}
+
+a:active {
+	color: var(--accentColor);
+}
+
+table, th, td {
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 0.5em;
+}
+
+td.no_left_padding {
+	padding-left: 0;
+}
+
+td.dates {
+	min-width: 8em;
+	text-align: right;
+}
+
+td.fill_width {
+	max-width: 0;
+	width: 100%;
+}
+
+textarea.input_text {
+	height: 8em;
+}
+
+.input_text {
+	background-color: transparent;
+	border: 1px solid var(--accentColor);
+	box-sizing: border-box;
+	color: var(--textColor);
+	display: inline-block;
+	padding: 1em;
+	resize: none;
+	text-align: left;
+	width: 100%;
+}
+
+.input_button {
+	border: none;
+	background-color: var(--accentColor);
+	color: white;
+	cursor: pointer;
+	margin: 0;
+	padding: 1em;
+	text-align: center;
+}
+
+.input_button:hover {
+	background-color: var(--accentColorButtonHover);
+}
+
+.half_width {
+	width: 50%;
+}
+
+.row {
+	display: flex;
+}
+
+.full_height {
+	height: 100%;
+}
+
+.menu {
+	border-right: 1px solid var(--accentColorDisabled);
+}
+
+.separator {
+	border-top: 1px solid var(--accentColorDisabled);
+}
+
+.menu_button {
+	border: 2px solid transparent;
+	box-sizing: border-box;
+	cursor: pointer;
+	margin: 0;
+	padding: 1em;
+	text-align: center;
+}
+
+.menu_button:hover {
+	border: 2px solid var(--textColor);
+}
+
+.menu_button.disabled {
+	border: 2px solid transparent;
+	color: var(--accentColorDisabled);
+	cursor: default;
+}
+
+.scroll_box {
+	height: 45%;
+	overflow-y: auto;
+}
+
+.editor {
+	padding: 0 2em;
+}
