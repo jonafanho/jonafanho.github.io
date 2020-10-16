@@ -52,6 +52,10 @@
 	}
 }
 
+:root {
+	--textSize: 1em;
+}
+
 * {
 	font-family: "Noto Sans", sans-serif;
 }
@@ -89,7 +93,7 @@ td.no_left_padding {
 }
 
 td.dates {
-	min-width: 8em;
+	min-width: 10em;
 	text-align: right;
 }
 
@@ -102,12 +106,18 @@ textarea.input_text {
 	height: 8em;
 }
 
+canvas {
+	flex: 1;
+	margin: 1em;
+}
+
 .input_text {
 	background-color: transparent;
 	border: 1px solid var(--accentColor);
 	box-sizing: border-box;
 	color: var(--textColor);
 	display: inline-block;
+	font-size: var(--textSize);
 	padding: 1em;
 	resize: none;
 	text-align: left;
@@ -119,6 +129,7 @@ textarea.input_text {
 	background-color: var(--accentColor);
 	color: white;
 	cursor: pointer;
+	font-size: var(--textSize);
 	margin: 0;
 	padding: 1em;
 	text-align: center;
@@ -128,8 +139,18 @@ textarea.input_text {
 	background-color: var(--accentColorButtonHover);
 }
 
+.input_color {
+	height: 4em;
+	margin: 0;
+	vertical-align: middle;
+}
+
 .half_width {
 	width: 50%;
+}
+
+.one_third_width {
+	width: 33.333%;
 }
 
 .flex {
@@ -143,16 +164,16 @@ textarea.input_text {
 .left_bar {
 	border-right: 1px solid var(--accentColorDisabled);
 	flex-direction: column;
-	padding: 0 2em;
+	padding: 0 1em;
 }
 
 .menu_bar {
-	margin: 0 -2em;
+	margin: 0 -1em;
 }
 
 .separator {
 	border-top: 1px solid var(--accentColorDisabled);
-	margin: 0 -2em;
+	margin: 0 -1em;
 }
 
 .menu_button {
