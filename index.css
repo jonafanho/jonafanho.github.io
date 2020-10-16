@@ -80,6 +80,11 @@ a:active {
 	color: var(--accentColor);
 }
 
+a.no_underline {
+	color: var(--textColor);
+	text-decoration: none;
+}
+
 table, th, td {
 	border-collapse: collapse;
 }
@@ -143,6 +148,10 @@ canvas {
 	height: 4em;
 	margin: 0;
 	vertical-align: middle;
+}
+
+.input_file::-webkit-file-upload-button {
+	visibility: hidden;
 }
 
 .half_width {

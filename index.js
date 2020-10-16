@@ -19,6 +19,7 @@ function setup() {
 		constructor(props) {
 			super(props);
 			this.newTimeline = this.newTimeline.bind(this);
+			this.uploadFile = this.uploadFile.bind(this);
 			this.deleteEvent = this.deleteEvent.bind(this);
 			this.editEvent = this.editEvent.bind(this);
 			this.cancelEditEvent = this.cancelEditEvent.bind(this);
@@ -29,6 +30,19 @@ function setup() {
 
 		newTimeline(event) {
 			this.setState({timeline: JSON.parse(JSON.stringify(NEW_TIMELINE))}, this.drawCanvas);
+		}
+
+		uploadFile(event) {
+			const fileList = event.target.files;
+			if (fileList.length > 0) {
+				const reader = new FileReader();
+				reader.onload = () => {
+					const text = reader.result;
+					this.setState({timeline: JSON.parse(atob(text.substring(text.indexOf("base64") + 7)))}, this.drawCanvas);
+				};
+				reader.readAsDataURL(fileList[0]);
+			}
+			event.target.value = "";
 		}
 
 		deleteEvent(event, index) {
@@ -134,8 +148,13 @@ function setup() {
 			return (
 				<div className="menu_bar flex">
 					<p className="menu_button" onClick={this.newTimeline}>New Timeline</p>
-					<p className="menu_button">Open Existing Timeline</p>
-					<p className={`menu_button ${timelineLoaded ? "" : "disabled"}`}>Save Timeline</p>
+					<input hidden className="input_file" id="open_file" type="file" accept=".timeline" onChange={this.uploadFile}/>
+					<label className="menu_button" htmlFor="open_file">Open Existing Timeline</label>
+					<a
+						className={`menu_button no_underline ${timelineLoaded ? "" : "disabled"}`}
+						download="file.timeline"
+						href={URL.createObjectURL(new Blob([JSON.stringify(this.state.timeline)], {type: "text/plain"}))}
+					>Save Timeline</a>
 				</div>
 			);
 		}
